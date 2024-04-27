@@ -13,7 +13,9 @@ void config_map(mlx *s,int fd)
 		tmp = get_next_line(fd);
 	}
 	s->map = ft_split(str, '\n');
-	check_walls(s);
+	if (check_walls(s) == 0)
+		return (-1);
+	
 }
 int	main(int ac, char **av)
 {

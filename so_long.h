@@ -6,7 +6,7 @@
 /*   By: eel-ansa <eel-ansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 12:29:35 by eel-ansa          #+#    #+#             */
-/*   Updated: 2024/04/27 21:15:05 by eel-ansa         ###   ########.fr       */
+/*   Updated: 2024/04/27 21:38:59 by eel-ansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct mlx_struct{
 int	check_walls(mlx *s);
 
 /*				  utils				*/
+char	**ft_free(char **str, int i);
 char	**ft_split(char const *s, char c);
 
 #endif

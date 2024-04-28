@@ -42,7 +42,7 @@ char	*ft_substr(char *s, int start, int len)
 	return (str);
 }
 
-static char	**ft_free(char **str, int i)
+char	**ft_free(char **str, int i)
 {
 	while (i > 0)
 	{

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eel-ansa <eel-ansa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/29 12:57:33 by eel-ansa          #+#    #+#             */
+/*   Updated: 2024/04/29 12:58:02 by eel-ansa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static int	c_word(char const *s, char c)
@@ -18,9 +30,10 @@ static int	c_word(char const *s, char c)
 	}
 	return (cnt);
 }
+
 char	*ft_substr(char *s, int start, int len)
 {
-	int	i;
+	int		i;
 	char	*str;
 
 	if (!s)

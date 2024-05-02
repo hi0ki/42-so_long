@@ -6,14 +6,33 @@
 /*   By: eel-ansa <eel-ansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:59:36 by eel-ansa          #+#    #+#             */
-/*   Updated: 2024/05/01 19:47:36 by eel-ansa         ###   ########.fr       */
+/*   Updated: 2024/05/02 22:55:27 by eel-ansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void ll()
+{
+		system("leaks so_long");
+}
+
+void	start(mlx *s)
+{
+	void *texture;
+
+	s->mlx = mlx_init(s->width,  s->height, "so_long", 0);
+	get_walls_ground(s, s->mlx);
+	get_coins(s, s->mlx);
+	texture = mlx_load_png("imgs/player.png");
+	s->player = mlx_texture_to_image(s->mlx, texture);
+	mlx_image_to_window(s->mlx, s->player, s->x, s->y);
+	mlx_delete_texture(texture);
+}
+
 int	main(int ac, char **av)
 {
+	atexit(ll);
 	int fd;
 	int i;
 	mlx str;
@@ -22,7 +41,7 @@ int	main(int ac, char **av)
 	if (ac > 1)
 	{
 		fd = open(av[1], O_RDWR);
-		if (config_map(&str, fd) == 0)
+		if (config_map(&str, fd) == 0 && check_ber(av[1]) == 0)
 		{
 			str.height = (arrlen(&str)) * 60;
 			str.width = (ft_strlen(str.map[1])) * 60;
@@ -35,7 +54,8 @@ int	main(int ac, char **av)
 			mlx_terminate(str.mlx);
 			arrfree(str.map);
 		}
+		else
+			arrfree(str.map);
 	}
-	system("leaks so_long");
 	return 0;
 }

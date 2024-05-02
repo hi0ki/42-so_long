@@ -6,30 +6,32 @@
 /*   By: eel-ansa <eel-ansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:54:23 by eel-ansa          #+#    #+#             */
-/*   Updated: 2024/05/01 16:53:27 by eel-ansa         ###   ########.fr       */
+/*   Updated: 2024/05/02 21:30:06 by eel-ansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**copy_arr(mlx *s)
+int check_ber(char *str)
 {
-	int		i;
-	int		x;
-	char	**arr;
+	int i;
+	int j;
+	char *s;
 
+	s = ".ber";
 	i = 0;
-	x = arrlen(s);
-	arr = malloc(x * sizeof(char *));
-	while (s->map[i])
-	{
-		arr[i] = ft_strdup(s->map[i]);
+	j = 4;
+	while (str[i])
 		i++;
+	while (i >= 0 && j >= 0)
+	{
+		if (str[i] != s[j])
+			return (-1);
+		j--;
+		i--;
 	}
-	arr[i] = NULL;
-	return (arr);
+	return 0;
 }
-
 int	check_walls(mlx *s)
 {
 	int	i;

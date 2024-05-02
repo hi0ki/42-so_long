@@ -1,5 +1,15 @@
 #include "so_long.h"
 
+void get_player(mlx *s, char *str, int x, int y)
+{
+	void *texture;
+
+	mlx_delete_image(s->mlx, s->player);
+	texture = mlx_load_png(str);
+	s->player = mlx_texture_to_image(s->mlx, texture);
+	mlx_image_to_window(s->mlx, s->player, x, y);
+	mlx_delete_texture(texture);
+}
 void take_thecoins(mlx *s, int x, int y)
 {
 	void *texture;
@@ -27,6 +37,15 @@ void take_thecoins(mlx *s, int x, int y)
 		get_coins(s, s->mlx);
 }
 
+
+
+/*
+
+
+khaaask tbdl had fnct t9smha bach dir dik tswira dyal lfo9 ltht o jnab bhal li dayr daba bach ib9ra imovi 3la hsab tswira
+
+
+*/
 void my_keys(mlx_key_data_t keydata, void *param)
 {
     mlx *s;
@@ -39,17 +58,22 @@ void my_keys(mlx_key_data_t keydata, void *param)
 
     if (keydata.key == MLX_KEY_W && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS) && s->map[y - 1][x] != '1')
 		s->player->instances->y -= 60;
-	if (keydata.key == MLX_KEY_S && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS) && s->map[y + 1][x] != '1')
+	else if (keydata.key == MLX_KEY_S && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS) && s->map[y + 1][x] != '1')
 		s->player->instances->y += 60;
-    if (keydata.key == MLX_KEY_D && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS) && s->map[y][x + 1] != '1')
+    else if (keydata.key == MLX_KEY_D && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS) && s->map[y][x + 1] != '1')
+	{
+		printf("test\n");
 		s->player->instances->x += 60;
-    if (keydata.key == MLX_KEY_A && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS) && s->map[y][x - 1] != '1')
+		get_player(s, "imgs/player.png", (x + 1) * 60,y * 60);
+	}
+    else if (keydata.key == MLX_KEY_A && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS) && s->map[y][x - 1] != '1')
+	{
 		s->player->instances->x -= 60;
-    if (keydata.key == MLX_KEY_ESCAPE)
+		get_player(s, "imgs/player_rev.png", (x - 1) * 60, y * 60);
+	}
+	else if (keydata.key == MLX_KEY_ESCAPE)
         exit(1);
-	x = s->player->instances->x / 60;
-    y = s->player->instances->y / 60;
-	take_thecoins(s, x, y);
+	take_thecoins(s, s->player->instances->x / 60, s->player->instances->y / 60);
 }
 
 void get_coins(mlx *s, mlx_t *mlx)
@@ -104,16 +128,4 @@ void get_walls_ground(mlx *s, mlx_t *mlx)
 		}
 		y++;
 	}
-}
-void	start(mlx *s)
-{
-	void *texture;
-
-	s->mlx = mlx_init(s->width,  s->height, "so_long", 0);
-	get_walls_ground(s, s->mlx);
-	get_coins(s, s->mlx);
-	texture = mlx_load_png("imgs/player.png");
-	s->player = mlx_texture_to_image(s->mlx, texture);
-	mlx_image_to_window(s->mlx, s->player, s->x, s->y);
-	mlx_delete_texture(texture);
 }

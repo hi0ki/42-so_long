@@ -47,7 +47,7 @@ int	config_map(mlx *s, int fd)
 	str = NULL;
 	tmp = get_next_line(fd);
 	if (tmp == NULL)
-		return -1;
+		exit(EXIT_FAILURE);
 	while (tmp)
 	{
 		str = ft_strjoin(str, tmp);

@@ -6,7 +6,7 @@
 /*   By: eel-ansa <eel-ansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 12:29:35 by eel-ansa          #+#    #+#             */
-/*   Updated: 2024/05/02 09:25:46 by eel-ansa         ###   ########.fr       */
+/*   Updated: 2024/05/02 22:47:16 by eel-ansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 # define SO_LONG_H
 
 
-#include "MLX42/include/MLX42/MLX42.h"
-#include "gnl/get_next_line.h"
+#include "../MLX42/include/MLX42/MLX42.h"
+#include "../gnl/get_next_line.h"
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -39,6 +39,7 @@ int		check_coins_e(mlx *s);
 int		check_player(mlx *s);
 void	check_path(char **map, int x, int y, mlx *s);
 int		config_map(mlx *s, int fd);
+int		check_ber(char *str);
 /*				MLX utils             */
 void	start(mlx *s);
 void 	my_keys(mlx_key_data_t keydata, void *param);
@@ -52,5 +53,6 @@ int 	arrlen(mlx *s);
 void	arrfree(char **arr);
 char 	**copy_arr(mlx *s);
 void 	find_player(mlx *s);
+void mini_putnbr(int nbr);
 
 #endif

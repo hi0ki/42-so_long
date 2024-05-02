@@ -1,4 +1,4 @@
-FILES= gnl/get_next_line.c gnl/get_next_line_utils.c ft_split.c main.c check_map.c utils.c
+FILES= gnl/get_next_line.c gnl/get_next_line_utils.c ft_split.c main.c check_map.c utils.c config_map.c mlx_start.c
 
 NAME=so_long
 CC= cc -Werror -Wall -Wextra MLX42/build/libmlx42.a -I"MLX42/include/MLX42/MLX42.h" -lglfw -L"/Users/eel-ansa/.brew/opt/glfw/lib/"

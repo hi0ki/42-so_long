@@ -6,19 +6,11 @@
 /*   By: eel-ansa <eel-ansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:54:23 by eel-ansa          #+#    #+#             */
-/*   Updated: 2024/04/29 14:36:09 by eel-ansa         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:53:27 by eel-ansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-/*
-	check walls : ✔️
-	check coins	: ✔️
-	check path
-	check player : ✔️
-	check exit : ✔️
-*/
 
 char	**copy_arr(mlx *s)
 {
@@ -84,8 +76,8 @@ int	check_coins_e(mlx *s)
 		{
 			if (s->map[i][j] == 'C')
 				coins += 1;
-			if (s->map[i][j] == 'E')
-				exit += 1; 
+			else if (s->map[i][j] == 'E')
+				exit += 1;
 			j++;
 		}
 		i++;
@@ -99,33 +91,39 @@ int	check_player(mlx *s)
 {
 	int	i;
 	int	j;
+	int count;
 
 	i = 0;
+	count = 0;
 	while (s->map[i])
 	{
 		j = 0;
 		while (s->map[i][j])
 		{
 			if (s->map[i][j] == 'P')
-				return (0);
+				count += 1;
+			else if (s->map[i][j] != '1' && s->map[i][j] != 'P' && s->map[i][j] != 'C' && s->map[i][j] != 'E' && s->map[i][j] != '0')
+				return (-1);
 			j++;
 		}
 		i++;
 	}
+	if (count == 1)
+		return (0);
 	return (-1);
 }
 
 void	check_path(char **map, int x, int y, mlx *s)
 {
-	if (map[x][y] == '1' || (x <= 0 || x >= arrlen(s))
-	|| (y <= 0 || y >= ft_strlen(map[0])))
+	if (map[y][x] == '1' || (y <= 0 || y >= arrlen(s))
+	|| (x <= 0 || x >= ft_strlen(map[0])))
 		return ;
-	else if (map[x][y] == 'C')
+	else if (map[y][x] == 'C')
 		s->coins += 1;
-	else if (map[x][y] == 'E')
+	else if (map[y][x] == 'E')
 		s->exit += 1;
-	if (map[x][y] != '1')
-		map[x][y] = '1';
+	if (map[y][x] != '1')
+		map[y][x] = '1';
 	check_path(map, x + 1, y, s);
 	check_path(map, x - 1, y, s);
 	check_path(map, x, y + 1, s);

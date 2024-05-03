@@ -6,16 +6,11 @@
 /*   By: eel-ansa <eel-ansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:59:36 by eel-ansa          #+#    #+#             */
-/*   Updated: 2024/05/02 22:55:27 by eel-ansa         ###   ########.fr       */
+/*   Updated: 2024/05/03 17:31:12 by eel-ansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void ll()
-{
-		system("leaks so_long");
-}
 
 void	start(mlx *s)
 {
@@ -24,7 +19,7 @@ void	start(mlx *s)
 	s->mlx = mlx_init(s->width,  s->height, "so_long", 0);
 	get_walls_ground(s, s->mlx);
 	get_coins(s, s->mlx);
-	texture = mlx_load_png("imgs/player.png");
+	texture = mlx_load_png("imgs/to_bot.png");
 	s->player = mlx_texture_to_image(s->mlx, texture);
 	mlx_image_to_window(s->mlx, s->player, s->x, s->y);
 	mlx_delete_texture(texture);
@@ -32,12 +27,10 @@ void	start(mlx *s)
 
 int	main(int ac, char **av)
 {
-	atexit(ll);
+	// atexit(ll);
 	int fd;
-	int i;
 	mlx str;
 
-	i = 0;
 	if (ac > 1)
 	{
 		fd = open(av[1], O_RDWR);

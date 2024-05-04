@@ -9,7 +9,7 @@ void take_thecoins(mlx *s, int x, int y, char *str)
 	{
 		s->coins -= 1;
 		s->map[y][x] = '0';
-		texture = mlx_load_png("imgs/ground.png");
+		texture = mlx_load_png("imgs/walls/ground.png");
 		ground = mlx_texture_to_image(s->mlx, texture);
 		mlx_delete_texture(texture);
 		mlx_image_to_window(s->mlx, ground, x * 60, y * 60);

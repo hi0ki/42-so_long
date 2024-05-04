@@ -52,13 +52,13 @@ void get_walls_ground(mlx *s, mlx_t *mlx)
 		x = 0;
 		while (s->map[y][x])
 		{
-			if (s->map[y][x] == '1')
-				texture = mlx_load_png("imgs/wall.png");
-			else
-				texture = mlx_load_png("imgs/ground.png");
-			image = mlx_texture_to_image(mlx, texture);
-			mlx_image_to_window(mlx, image, x * 60, y * 60);
-			mlx_delete_texture(texture);
+			if (s->map[y][x] == '0' || s->map[y][x] == 'C' || s->map[y][x] == 'P' || s->map[y][x] == 'E')
+			{
+				texture = mlx_load_png("imgs/walls/ground.png");
+				image = mlx_texture_to_image(mlx, texture);
+				mlx_image_to_window(mlx, image, x * 60, y * 60);
+				mlx_delete_texture(texture);
+			}
 			x++;
 		}
 		y++;

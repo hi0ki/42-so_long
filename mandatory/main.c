@@ -6,18 +6,24 @@
 /*   By: eel-ansa <eel-ansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:59:36 by eel-ansa          #+#    #+#             */
-/*   Updated: 2024/05/03 17:31:12 by eel-ansa         ###   ########.fr       */
+/*   Updated: 2024/05/04 10:58:36 by eel-ansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void ll()
+{
+	system("leaks so_long");
+}
 void	start(mlx *s)
 {
 	void *texture;
 
 	s->mlx = mlx_init(s->width,  s->height, "so_long", 0);
 	get_walls_ground(s, s->mlx);
+	put_walls(s, 0, 0);
+	put_ground(s, 1, 1);
 	get_coins(s, s->mlx);
 	texture = mlx_load_png("imgs/to_bot.png");
 	s->player = mlx_texture_to_image(s->mlx, texture);
@@ -27,7 +33,7 @@ void	start(mlx *s)
 
 int	main(int ac, char **av)
 {
-	// atexit(ll);
+	atexit(ll);
 	int fd;
 	mlx str;
 
@@ -50,5 +56,7 @@ int	main(int ac, char **av)
 		else
 			arrfree(str.map);
 	}
-	return 0;
 }
+// nl
+//16 line abort 
+// nl after end abort

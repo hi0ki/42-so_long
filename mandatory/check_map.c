@@ -6,7 +6,7 @@
 /*   By: eel-ansa <eel-ansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:54:23 by eel-ansa          #+#    #+#             */
-/*   Updated: 2024/05/02 21:30:06 by eel-ansa         ###   ########.fr       */
+/*   Updated: 2024/05/04 12:50:52 by eel-ansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ int check_ber(char *str)
 	while (i >= 0 && j >= 0)
 	{
 		if (str[i] != s[j])
-			return (-1);
+		{
+			return (puterror("Error: Invalid file extension. Expected '.ber'\n"),-1);
+		}
 		j--;
 		i--;
 	}
@@ -42,20 +44,20 @@ int	check_walls(mlx *s)
 	while (s->map[i][len])
 	{
 		if (s->map[i][len] != '1')
-			return (-1);
+			return (puterror("Error: the map is not surrounded by walls\n"),-1);
 		len++;
 	}
 	while (s->map[i])
 	{
 		if (s->map[i][0] != '1' || s->map[i][len - 1] != '1')
-			return (-1);
+			return (puterror("Error: the map is not surrounded by walls\n"), -1);
 		i++;
 	}
 	len = 0;
 	while (s->map[i - 1][len])
 	{
 		if (s->map[i - 1][len] != '1')
-			return (-1);
+			return (puterror("Error: the map is not surrounded by walls\n"), -1);
 		len++;
 	}
 	return (0);
@@ -84,8 +86,8 @@ int	check_coins_e(mlx *s)
 		}
 		i++;
 	}
-	if (exit > 1 || exit == 0)
-		return (0);
+	if (exit > 1 || exit == 0 || coins == 0)
+		return (puterror("Error: Map must contain exactly one exit and at least one coin\n"), 0);
 	return (coins);
 }
 
@@ -117,8 +119,7 @@ int	check_player(mlx *s)
 
 void	check_path(char **map, int x, int y, mlx *s)
 {
-	if (map[y][x] == '1' || (y <= 0 || y >= arrlen(s))
-	|| (x <= 0 || x >= ft_strlen(map[0])))
+	if (map[y][x] == '1' || (y <= 0 || y >= arrlen(s)) || (x <= 0 || x >= ft_strlen(map[0])))
 		return ;
 	else if (map[y][x] == 'C')
 		s->coins += 1;
@@ -126,6 +127,7 @@ void	check_path(char **map, int x, int y, mlx *s)
 		s->exit += 1;
 	if (map[y][x] != '1')
 		map[y][x] = '1';
+	printf("dakhl\n");
 	check_path(map, x + 1, y, s);
 	check_path(map, x - 1, y, s);
 	check_path(map, x, y + 1, s);

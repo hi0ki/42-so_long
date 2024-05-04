@@ -6,7 +6,7 @@
 /*   By: eel-ansa <eel-ansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 12:29:35 by eel-ansa          #+#    #+#             */
-/*   Updated: 2024/05/03 11:01:21 by eel-ansa         ###   ########.fr       */
+/*   Updated: 2024/05/04 12:05:35 by eel-ansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,23 @@ int		config_map(mlx *s, int fd);
 int		check_ber(char *str);
 /*				MLX utils             */
 void	start(mlx *s);
-void 	my_keys(mlx_key_data_t keydata, void *param);
-void 	get_coins(mlx *s, mlx_t *mlx);
-void 	get_walls_ground(mlx *s, mlx_t *mlx);
-void take_thecoins(mlx *s, int x, int y, char *str);
-void 	my_keys(mlx_key_data_t keydata, void *param);
-void get_player(mlx *s, char *str, int x, int y);
+void	put_walls(mlx *s, int x, int y);
+void	put_ground(mlx *s, int x, int y);
+void	my_keys(mlx_key_data_t keydata, void *param);
+void	get_coins(mlx *s, mlx_t *mlx);
+void	get_walls_ground(mlx *s, mlx_t *mlx);
+void	take_thecoins(mlx *s, int x, int y, char *str);
+void	my_keys(mlx_key_data_t keydata, void *param);
+void	get_player(mlx *s, char *str, int x, int y);
 /*				  utils				*/
 char	**ft_free(char **str, int i);
 char	**ft_split(char const *s, char c);
-int 	arrlen(mlx *s);
+int		arrlen(mlx *s);
 void	arrfree(char **arr);
-char 	**copy_arr(mlx *s);
-void 	find_player(mlx *s);
-void mini_putnbr(int nbr);
+char	**copy_arr(mlx *s);
+void	find_player(mlx *s);
+void	mini_putnbr(int nbr);
+void	puterror(char *str)
+
 
 #endif

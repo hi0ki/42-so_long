@@ -6,7 +6,7 @@
 /*   By: eel-ansa <eel-ansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 00:00:32 by eel-ansa          #+#    #+#             */
-/*   Updated: 2024/05/01 16:35:53 by eel-ansa         ###   ########.fr       */
+/*   Updated: 2024/05/04 10:35:57 by eel-ansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (!s2)
 		return (NULL);
+	if (ft_strlen(s2) == 1)
+	{
+		free(s2);
+		exit(0);
+	}
 	dlen = ft_strlen(s1);
 	slen = ft_strlen(s2);
 	str = malloc((dlen + slen + 1) * sizeof(char));

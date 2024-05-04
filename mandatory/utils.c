@@ -6,12 +6,23 @@
 /*   By: eel-ansa <eel-ansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:59:43 by eel-ansa          #+#    #+#             */
-/*   Updated: 2024/05/03 11:40:00 by eel-ansa         ###   ########.fr       */
+/*   Updated: 2024/05/04 12:03:48 by eel-ansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void puterror(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(2, &str[i], 1);
+		i++;
+	}
+}
 void mini_putnbr(int nbr)
 {
 	char c;
@@ -43,7 +54,6 @@ void	arrfree(char **arr)
 	}
 	free(arr);
 }
-
 char	**copy_arr(mlx *s)
 {
 	int		i;
@@ -52,7 +62,8 @@ char	**copy_arr(mlx *s)
 
 	i = 0;
 	x = arrlen(s);
-	arr = malloc(x * sizeof(char *));
+	printf("%d\n", x);
+	arr = malloc((x + 1) * sizeof(char *));
 	while (s->map[i])
 	{
 		arr[i] = ft_strdup(s->map[i]);

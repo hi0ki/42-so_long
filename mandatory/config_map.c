@@ -53,12 +53,6 @@ int	config_map(mlx *s, int fd)
 		str = ft_strjoin(str, tmp);
 		free(tmp);
 		tmp = get_next_line(fd);
-        if (tmp != NULL && tmp[0] == '\n')
-        {
-            free(tmp);
-            free(str);
-            return (-1);
-        }
     }
 	s->map = ft_split(str, '\n');
 	free(str);

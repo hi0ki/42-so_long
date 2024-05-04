@@ -58,7 +58,7 @@ void	arrfree(char **arr);
 char	**copy_arr(mlx *s);
 void	find_player(mlx *s);
 void	mini_putnbr(int nbr);
-void	puterror(char *str)
+void	puterror(char *str);
 
 
 #endif

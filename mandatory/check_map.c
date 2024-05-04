@@ -107,14 +107,14 @@ int	check_player(mlx *s)
 			if (s->map[i][j] == 'P')
 				count += 1;
 			else if (s->map[i][j] != '1' && s->map[i][j] != 'P' && s->map[i][j] != 'C' && s->map[i][j] != 'E' && s->map[i][j] != '0')
-				return (-1);
+				return (puterror("Error: Invalid character in map\n"), -1);
 			j++;
 		}
 		i++;
 	}
 	if (count == 1)
 		return (0);
-	return (-1);
+	return (puterror("Error: Map must contain exactly one player"), -1);
 }
 
 void	check_path(char **map, int x, int y, mlx *s)
@@ -127,7 +127,6 @@ void	check_path(char **map, int x, int y, mlx *s)
 		s->exit += 1;
 	if (map[y][x] != '1')
 		map[y][x] = '1';
-	printf("dakhl\n");
 	check_path(map, x + 1, y, s);
 	check_path(map, x - 1, y, s);
 	check_path(map, x, y + 1, s);

@@ -62,7 +62,6 @@ char	**copy_arr(mlx *s)
 
 	i = 0;
 	x = arrlen(s);
-	printf("%d\n", x);
 	arr = malloc((x + 1) * sizeof(char *));
 	while (s->map[i])
 	{

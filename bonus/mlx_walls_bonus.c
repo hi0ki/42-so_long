@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void *test_walls(mlx *s, int x, int y)
 {

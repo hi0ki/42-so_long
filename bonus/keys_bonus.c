@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void take_thecoins(mlx *s, int x, int y, char *str)
 {

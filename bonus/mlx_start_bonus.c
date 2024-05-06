@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void get_player(mlx *s, char *str, int x, int y)
 {

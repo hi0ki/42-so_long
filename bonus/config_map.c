@@ -47,7 +47,7 @@ int	config_map(mlx *s, int fd)
 	str = NULL;
 	tmp = get_next_line(fd);
 	if (tmp == NULL)
-		exit(EXIT_FAILURE);
+		puterror("Error: File is empty\n");
 	while (tmp)
 	{
 		str = ft_strjoin(str, tmp);
@@ -57,8 +57,6 @@ int	config_map(mlx *s, int fd)
 	s->map = ft_split(str, '\n');
 	free(str);
 	if (check_walls(s) == -1 || check_coins_e(s) == 0 || check_player(s) == -1 || more_check(s) == -1)
-	{
-		return (-1);
-	}
+		return (puterror("Error\n"), -1);
 	return (0);
 }

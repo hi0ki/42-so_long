@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 	int fd;
 	mlx str;
 
-	if (ac > 1)
+	if (ac == 2)
 	{
 		fd = open(av[1], O_RDWR);
 		if (fd == -1)
@@ -53,5 +53,5 @@ int	main(int ac, char **av)
 		}
 	}
 	else
-		puterror("Error: No map\n");
+		puterror("Error\n");
 }

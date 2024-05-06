@@ -27,13 +27,17 @@ void take_thecoins(mlx *s, int x, int y, char *str)
 
 void left_right(mlx_key_data_t keydata, mlx *s, int x,int y)
 {
-    if (keydata.key == MLX_KEY_D && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS) && s->map[y][x + 1] != '1')
+    if (keydata.key == MLX_KEY_D && keydata.action && s->map[y][x + 1] != '1')
 	{
+		mini_putnbr(s->moves++);
+		write(1, "\n", 1);
 		s->player->instances->x += 60;
 		get_player(s, "imgs/to_right.png", (x + 1) * 60,y * 60);
 	}
-    else if (keydata.key == MLX_KEY_A && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS) && s->map[y][x - 1] != '1')
+    else if (keydata.key == MLX_KEY_A && keydata.action && s->map[y][x - 1] != '1')
 	{
+		mini_putnbr(s->moves++);
+		write(1, "\n", 1);
 		s->player->instances->x -= 60;
 		get_player(s, "imgs/to_left.png", (x - 1) * 60, y * 60);
 	}
@@ -45,13 +49,17 @@ void left_right(mlx_key_data_t keydata, mlx *s, int x,int y)
 
 void top_bot(mlx_key_data_t keydata, mlx *s, int x, int y)
 {
-    if (keydata.key == MLX_KEY_W && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS) && s->map[y - 1][x] != '1')
+    if (keydata.key == MLX_KEY_W && keydata.action && s->map[y - 1][x] != '1')
     {
+		mini_putnbr(s->moves++);
+		write(1, "\n", 1);
 		s->player->instances->y -= 60;
         get_player(s, "imgs/to_top.png", x * 60, (y - 1) * 60);
     }
-    else if (keydata.key == MLX_KEY_S && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS) && s->map[y + 1][x] != '1')
+    else if (keydata.key == MLX_KEY_S && keydata.action && s->map[y + 1][x] != '1')
 	{
+		mini_putnbr(s->moves++);
+		write(1, "\n", 1);
 		s->player->instances->y += 60;
         get_player(s, "imgs/to_bot.png", x * 60, (y + 1) * 60);
     }

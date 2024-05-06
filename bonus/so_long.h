@@ -42,7 +42,6 @@ void	check_path(char **map, int x, int y, mlx *s);
 int		config_map(mlx *s, int fd);
 int		check_ber(char *str);
 /*				MLX utils             */
-void	start(mlx *s);
 void	put_walls(mlx *s, int x, int y);
 void	put_ground(mlx *s, int x, int y);
 void	my_keys(mlx_key_data_t keydata, void *param);

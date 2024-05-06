@@ -12,11 +12,11 @@
 
 #include "so_long_bonus.h"
 
-int check_ber(char *str)
+int	check_ber(char *str)
 {
-	int i;
-	int j;
-	char *s;
+	int		i;
+	int		j;
+	char	*s;
 
 	s = ".ber";
 	i = 0;
@@ -27,14 +27,16 @@ int check_ber(char *str)
 	{
 		if (str[i] != s[j])
 		{
-			return (puterror("Error: Invalid file extension. Expected '.ber'\n"),-1);
+			puterror("Error: Invalid file extension. Expected '.ber'\n");
+			return (-1);
 		}
 		j--;
 		i--;
 	}
-	return 0;
+	return (0);
 }
-int	check_walls(mlx *s)
+
+int	check_walls(t_mlx *s)
 {
 	int	i;
 	int	len;
@@ -44,7 +46,7 @@ int	check_walls(mlx *s)
 	while (s->map[i][len])
 	{
 		if (s->map[i][len] != '1')
-			return (puterror("Error: the map is not surrounded by walls\n"),-1);
+			return (puterror("Error: the map is not surrounded by walls\n"), -1);
 		len++;
 	}
 	while (s->map[i])
@@ -63,7 +65,7 @@ int	check_walls(mlx *s)
 	return (0);
 }
 
-int	check_coins_e(mlx *s)
+int	check_coins_e(t_mlx *s)
 {
 	int	i;
 	int	j;
@@ -87,15 +89,15 @@ int	check_coins_e(mlx *s)
 		i++;
 	}
 	if (exit > 1 || exit == 0 || coins == 0)
-		return (puterror("Error: Map must contain exactly one exit and at least one coin\n"), 0);
+		return (puterror("Error: coins or exit\n"), 0);
 	return (coins);
 }
 
-int	check_player(mlx *s)
+int	check_player(t_mlx *s)
 {
 	int	i;
 	int	j;
-	int count;
+	int	count;
 
 	i = 0;
 	count = 0;
@@ -106,7 +108,8 @@ int	check_player(mlx *s)
 		{
 			if (s->map[i][j] == 'P')
 				count += 1;
-			else if (s->map[i][j] != '1' && s->map[i][j] != 'P' && s->map[i][j] != 'C' && s->map[i][j] != 'E' && s->map[i][j] != '0')
+			else if (s->map[i][j] != '1' && s->map[i][j] != 'P' &&
+			s->map[i][j] != 'C' && s->map[i][j] != 'E' && s->map[i][j] != '0')
 				return (puterror("Error: Invalid character in map\n"), -1);
 			j++;
 		}
@@ -117,9 +120,10 @@ int	check_player(mlx *s)
 	return (puterror("Error: Map must contain exactly one player"), -1);
 }
 
-void	check_path(char **map, int x, int y, mlx *s)
+void	check_path(char **map, int x, int y, t_mlx *s)
 {
-	if (map[y][x] == '1' || (y <= 0 || y >= arrlen(s)) || (x <= 0 || x >= ft_strlen(map[0])))
+	if (map[y][x] == '1' || (y <= 0 || y >= arrlen(s)) ||
+	(x <= 0 || x >= ft_strlen(map[0])))
 		return ;
 	else if (map[y][x] == 'C')
 		s->coins += 1;
@@ -132,3 +136,4 @@ void	check_path(char **map, int x, int y, mlx *s)
 	check_path(map, x, y + 1, s);
 	check_path(map, x, y - 1, s);
 }
+

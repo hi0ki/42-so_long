@@ -12,11 +12,11 @@
 
 #include "so_long_bonus.h"
 
-void	start(mlx *s)
+void	start(t_mlx *s)
 {
-	void *texture;
+	void	*texture;
 
-	s->mlx = mlx_init(s->width,  s->height, "so_long", 0);
+	s->mlx = mlx_init(s->width, s->height, "so_long", 0);
 	get_walls_ground(s, s->mlx);
 	put_walls(s, 0, 0);
 	put_ground(s, 1, 1);
@@ -29,8 +29,8 @@ void	start(mlx *s)
 
 int	main(int ac, char **av)
 {
-	int fd;
-	mlx str;
+	int		fd;
+	t_mlx	str;
 
 	if (ac == 2)
 	{
@@ -42,12 +42,12 @@ int	main(int ac, char **av)
 			str.height = (arrlen(&str)) * 60;
 			str.width = (ft_strlen(str.map[1])) * 60;
 			if (str.width > 2080 || str.height > 1920)
-    			puterror("Error: The width or height is too high\n");
+				puterror("Error: The width or height is too high\n");
 			start(&str);
 			str.moves = 0;
 			mlx_key_hook(str.mlx, &my_keys, &str);
 			mlx_loop(str.mlx);
-			mlx_delete_image(str.mlx,str.player);
+			mlx_delete_image(str.mlx, str.player);
 			mlx_terminate(str.mlx);
 			arrfree(str.map);
 		}

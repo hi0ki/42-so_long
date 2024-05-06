@@ -12,9 +12,9 @@
 
 #include "so_long_bonus.h"
 
-void puterror(char *str)
+void	puterror(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -24,15 +24,18 @@ void puterror(char *str)
 	}
 	exit(EXIT_FAILURE);
 }
-void mini_putnbr(int nbr)
+
+void	mini_putnbr(int nbr)
 {
-	char c;
+	char	c;
+
 	if (nbr > 9)
 		mini_putnbr(nbr / 10);
 	c = nbr % 10 + '0';
 	write(1, &c, 1);
 }
-int	arrlen(mlx *s)
+
+int	arrlen(t_mlx *s)
 {
 	int	i;
 
@@ -54,7 +57,8 @@ void	arrfree(char **arr)
 	}
 	free(arr);
 }
-char	**copy_arr(mlx *s)
+
+char	**copy_arr(t_mlx *s)
 {
 	int		i;
 	int		x;
@@ -71,4 +75,3 @@ char	**copy_arr(mlx *s)
 	arr[i] = NULL;
 	return (arr);
 }
-

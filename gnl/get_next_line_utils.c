@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "../mandatory/so_long.h"
 
 int	ft_strlen(char *str)
 {
@@ -47,10 +48,10 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (!s2)
 		return (NULL);
-	if (ft_strlen(s2) == 1)
+	if (ft_strlen(s2) == 1 && s2[0] == '\n')
 	{
 		free(s2);
-		exit(0);
+		puterror("Error: Invalid map\n");
 	}
 	dlen = ft_strlen(s1);
 	slen = ft_strlen(s2);

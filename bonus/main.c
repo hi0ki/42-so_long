@@ -12,6 +12,10 @@
 
 #include "so_long.h"
 
+void ll()
+{
+	system("leaks so_long");
+}
 void	start(mlx *s)
 {
 	void *texture;
@@ -29,6 +33,7 @@ void	start(mlx *s)
 
 int	main(int ac, char **av)
 {
+	atexit(ll);
 	int fd;
 	mlx str;
 

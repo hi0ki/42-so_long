@@ -22,6 +22,7 @@ void puterror(char *str)
 		write(2, &str[i], 1);
 		i++;
 	}
+	exit(EXIT_FAILURE);
 }
 void mini_putnbr(int nbr)
 {

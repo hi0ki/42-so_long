@@ -21,11 +21,20 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+typedef struct enemy{
+	mlx_t	*mlx;
+	void **texture;
+	int		x;
+	int		y;
+	int		i;
+	int		j;
+}t_emy;
+
 typedef struct mlx_struct{
 	char		**map;
 	mlx_t		*mlx;
 	mlx_image_t	*player;
-	void		*img;
+	void		**texture;
 	int			x;
 	int			y;
 	int			moves;
@@ -36,7 +45,7 @@ typedef struct mlx_struct{
 	int			c_x;
 	int			c_y;
 	int			time;
-	bool		enb_img;
+	int			pic;
 }t_mlx;
 
 /*				check map				*/
@@ -50,7 +59,6 @@ int		check_ber(char *str);
 void	put_walls(t_mlx *s, int x, int y);
 void	put_ground(t_mlx *s, int x, int y);
 void	my_keys(mlx_key_data_t keydata, void *param);
-void	get_coins(t_mlx *s, mlx_t *mlx);
 void	get_walls_ground(t_mlx *s, mlx_t *mlx);
 void	take_thecoins(t_mlx *s, int x, int y, char *str);
 void	my_keys(mlx_key_data_t keydata, void *param);
@@ -64,5 +72,11 @@ char	**copy_arr(t_mlx *s);
 void	find_player(t_mlx *s);
 void	mini_putnbr(int nbr);
 void	puterror(char *str);
+/*				bonus           */
+void 	get_coins(t_mlx *s);
+void  start_loop(void *param);
+void	get_exit(t_mlx *s);
+void	get_enemy(t_mlx *s, t_emy *str);
+void	delete_tex(void **texture);
 
 #endif

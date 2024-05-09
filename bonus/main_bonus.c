@@ -14,17 +14,14 @@
 
 void	start(t_mlx *s)
 {
-	void	*texture;
-
 	s->mlx = mlx_init(s->width, s->height, "so_long", 0);
 	get_walls_ground(s, s->mlx);
 	put_walls(s, 0, 0);
 	put_ground(s, 1, 1);
-	get_coins(s, s->mlx);
-	texture = mlx_load_png("imgs/to_bot.png");
-	s->player = mlx_texture_to_image(s->mlx, texture);
-	mlx_image_to_window(s->mlx, s->player, s->x, s->y);
-	mlx_delete_texture(texture);
+	s->time = 0;
+	s->pic = 0;
+	mlx_loop_hook(s->mlx, start_loop, s);
+	get_player(s, "imgs/to_bot.png", s->x, s->y);
 }
 
 int	main(int ac, char **av)
@@ -44,7 +41,7 @@ int	main(int ac, char **av)
 			if (str.width > 2080 || str.height > 1920)
 				puterror("Error: The width or height is too high\n");
 			start(&str);
-			str.moves = 0;
+			str.moves = 1;
 			mlx_key_hook(str.mlx, &my_keys, &str);
 			mlx_loop(str.mlx);
 			mlx_delete_image(str.mlx, str.player);
@@ -54,4 +51,5 @@ int	main(int ac, char **av)
 	}
 	else
 		puterror("Error\n");
+	system("leaks so_long_bonus");
 }

@@ -109,7 +109,7 @@ int	check_player(t_mlx *s)
 			if (s->map[i][j] == 'P')
 				count += 1;
 			else if (s->map[i][j] != '1' && s->map[i][j] != 'P' &&
-			s->map[i][j] != 'C' && s->map[i][j] != 'E' && s->map[i][j] != '0')
+			s->map[i][j] != 'C' && s->map[i][j] != 'E' && s->map[i][j] != '0' && s->map[i][j] != 'R')
 				return (puterror("Error: Invalid character in map\n"), -1);
 			j++;
 		}

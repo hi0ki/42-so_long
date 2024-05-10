@@ -44,7 +44,7 @@ int	main(int ac, char **av)
 			if (str.width > 2080 || str.height > 1920)
 				puterror("Error: The width or height is too high\n");
 			start(&str);
-			str.moves = 0;
+			str.moves = 1;
 			mlx_key_hook(str.mlx, &my_keys, &str);
 			mlx_loop(str.mlx);
 			mlx_delete_image(str.mlx, str.player);

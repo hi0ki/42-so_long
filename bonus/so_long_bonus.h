@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eel-ansa <eel-ansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
-
 
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../gnl/get_next_line.h"
@@ -21,19 +19,11 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-typedef struct enemy{
-	mlx_t	*mlx;
-	void **texture;
-	int		x;
-	int		y;
-	int		i;
-	int		j;
-}t_emy;
-
 typedef struct mlx_struct{
 	char		**map;
 	mlx_t		*mlx;
 	mlx_image_t	*player;
+	char		*str;
 	void		**texture;
 	int			x;
 	int			y;
@@ -73,10 +63,12 @@ void	find_player(t_mlx *s);
 void	mini_putnbr(int nbr);
 void	puterror(char *str);
 /*				bonus           */
-void 	get_coins(t_mlx *s);
-void  start_loop(void *param);
+void	get_coins(t_mlx *s);
+void	start_loop(void *param);
 void	get_exit(t_mlx *s);
-void	get_enemy(t_mlx *s, t_emy *str);
+void	get_enemy(t_mlx *s);
 void	delete_tex(void **texture);
+char	*ft_itoa(int n);
+void	put_count(t_mlx *s);
 
 #endif

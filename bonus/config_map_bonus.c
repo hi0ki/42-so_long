@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   config_map_bonus.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eel-ansa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/10 18:41:48 by eel-ansa          #+#    #+#             */
+/*   Updated: 2024/05/10 18:41:51 by eel-ansa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long_bonus.h"
 
 void	find_player(t_mlx *s)
@@ -59,7 +71,8 @@ int	config_map(t_mlx *s, int fd)
 	}
 	s->map = ft_split(str, '\n');
 	free(str);
-	if (check_walls(s) == -1 || check_coins_e(s) == 0 || check_player(s) == -1 || more_check(s) == -1)
+	if (check_walls(s) == -1 || check_coins_e(s) == 0 || 
+		check_player(s) == -1 || more_check(s) == -1)
 		return (puterror("Error\n"), -1);
 	return (0);
 }

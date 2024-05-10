@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eel-ansa <eel-ansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -20,6 +20,7 @@ void	start(t_mlx *s)
 	put_ground(s, 1, 1);
 	s->time = 0;
 	s->pic = 0;
+	get_enemy(s);
 	mlx_loop_hook(s->mlx, start_loop, s);
 	get_player(s, "imgs/to_bot.png", s->x, s->y);
 }
@@ -51,5 +52,4 @@ int	main(int ac, char **av)
 	}
 	else
 		puterror("Error\n");
-	system("leaks so_long_bonus");
 }

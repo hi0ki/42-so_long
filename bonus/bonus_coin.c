@@ -1,23 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bonus_coin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eel-ansa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/10 18:13:35 by eel-ansa          #+#    #+#             */
+/*   Updated: 2024/05/10 18:13:38 by eel-ansa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long_bonus.h"
 
-void	**get_texture()
+void	**get_texture(void)
 {
 	void	**texture;
 
-	texture = malloc(7 *sizeof(void *));
-	texture[0] = mlx_load_png("imgs/coin1.png");
-	texture[1] = mlx_load_png("imgs/coin2.png");
-	texture[2] = mlx_load_png("imgs/coin3.png");
-	texture[3] = mlx_load_png("imgs/coin4.png");
-	texture[4] = mlx_load_png("imgs/coin5.png");
-	texture[5] = mlx_load_png("imgs/coin6.png");
+	texture = malloc(7 * sizeof(void *));
+	texture[0] = mlx_load_png("imgs/coins/coin1.png");
+	texture[1] = mlx_load_png("imgs/coins/coin2.png");
+	texture[2] = mlx_load_png("imgs/coins/coin3.png");
+	texture[3] = mlx_load_png("imgs/coins/coin4.png");
+	texture[4] = mlx_load_png("imgs/coins/coin5.png");
+	texture[5] = mlx_load_png("imgs/coins/coin6.png");
 	texture[6] = NULL;
 	return (texture);
 }
 
 void	delete_tex(void **texture)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (texture[i])
@@ -46,7 +58,7 @@ void	get_coins(t_mlx *s)
 
 	y = 0;
 	while (s->map[y])
-	{   
+	{
 		x = 0;
 		while (s->map[y][x])
 		{
@@ -71,7 +83,7 @@ void	start_loop(void *param)
 		s->time = 0;
 	if (s->time == 6)
 	{
-		s->texture = get_texture();;
+		s->texture = get_texture();
 		if (s->pic > 5)
 			s->pic = 0;
 		get_coins(s);

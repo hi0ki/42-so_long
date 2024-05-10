@@ -45,7 +45,7 @@ void	left_right(mlx_key_data_t keydata, t_mlx *s, int x, int y)
 		write(1, "\n", 1);
 		s->player->instances->x += 60;
 		get_player(s, "imgs/to_right.png", (x + 1) * 60, y * 60);
-		take_thecoins(s, x+1, y, "imgs/to_right.png");
+		take_thecoins(s, x + 1, y, "imgs/to_right.png");
 	}
 	else if (keydata.key == MLX_KEY_A && keydata.action && 
 		s->map[y][x - 1] != '1')

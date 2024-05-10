@@ -58,6 +58,8 @@ int	config_map(t_mlx *s, int fd)
 	char	*str;
 
 	str = NULL;
+	s->coins = 0;
+	s->exit = 0;
 	tmp = get_next_line(fd);
 	if (tmp == NULL)
 		puterror("Error: File is empty\n");
@@ -71,6 +73,6 @@ int	config_map(t_mlx *s, int fd)
 	free(str);
 	if (check_walls(s) == -1 || check_coins_e(s) == 0 || 
 		check_player(s) == -1 || more_check(s) == -1)
-		return (puterror("Error\n"), -1);
+		puterror("Error\n");
 	return (0);
 }

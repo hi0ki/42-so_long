@@ -124,7 +124,7 @@ int	check_player(t_mlx *s)
 void	check_path(char **map, int x, int y, t_mlx *s)
 {
 	if (map[y][x] == '1' || (y <= 0 || y >= arrlen(s)) ||
-	(x <= 0 || x >= ft_strlen(map[0])))
+	(x <= 0 || x >= ft_strlen(map[0])) || map[y][x] == 'R')
 		return ;
 	else if (map[y][x] == 'C')
 		s->coins += 1;

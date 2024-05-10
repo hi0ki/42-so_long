@@ -53,5 +53,5 @@ int	main(int ac, char **av)
 		}
 	}
 	else
-		puterror("Error\n");
+		puterror("Error1\n");
 }

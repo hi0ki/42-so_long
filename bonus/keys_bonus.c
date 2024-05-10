@@ -61,22 +61,18 @@ void	left_right(mlx_key_data_t keydata, t_mlx *s, int x, int y)
 	if (keydata.key == MLX_KEY_D && keydata.action && 
 		s->map[y][x + 1] != '1' && s->map[y][x + 1] != 'R')
 	{
-		s->map[y][x] = '0';
 		get_count(s);
 		s->player->instances->x += 60;
 		get_player(s, "imgs/to_right.png", (x + 1) * 60, y * 60);
 		take_thecoins(s, x + 1, y, "imgs/to_right.png");
-		s->map[y][x + 1] = 'P';
 	}
 	else if (keydata.key == MLX_KEY_A && keydata.action && 
 		s->map[y][x - 1] != '1' && s->map[y][x - 1] != 'R')
 	{
-		s->map[y][x] = '0';
 		get_count(s);
 		s->player->instances->x -= 60;
 		get_player(s, "imgs/to_left.png", (x - 1) * 60, y * 60);
 		take_thecoins(s, x - 1, y, "imgs/to_left.png");
-		s->map[y][x - 1] = 'P';
 	}
 	if (keydata.key == MLX_KEY_D && keydata.action && s->map[y][x + 1] == 'R')
 		exit(0);
@@ -90,22 +86,18 @@ void	top_bot(mlx_key_data_t keydata, t_mlx *s, int x, int y)
 	if (keydata.key == MLX_KEY_W && keydata.action && 
 		s->map[y - 1][x] != '1' && s->map[y - 1][x] != 'R')
 	{
-		s->map[y][x] = '0';
 		get_count(s);
 		s->player->instances->y -= 60;
 		get_player(s, "imgs/to_top.png", x * 60, (y - 1) * 60);
 		take_thecoins(s, x, y - 1, "imgs/to_top.png");
-		s->map[y - 1][x] = 'P';
 	}
 	else if (keydata.key == MLX_KEY_S && keydata.action && 
 		s->map[y + 1][x] != '1' && s->map[y + 1][x] != 'R')
 	{
-		s->map[y][x] = '0';
 		get_count(s);
 		s->player->instances->y += 60;
 		get_player(s, "imgs/to_bot.png", x * 60, (y + 1) * 60);
 		take_thecoins(s, x, y + 1, "imgs/to_bot.png");
-		s->map[y + 1][x] = 'P';
 	}
 	if ((keydata.key == MLX_KEY_W && keydata.action && 
 			s->map[y - 1][x] == 'R') || (keydata.key == MLX_KEY_S && 

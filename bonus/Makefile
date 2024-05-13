@@ -1,4 +1,4 @@
-FILES= ../gnl/get_next_line.c ../gnl/get_next_line_utils.c ft_split_bonus.c check_map_bonus.c utils_bonus.c config_map_bonus.c mlx_start_bonus.c main_bonus.c keys_bonus.c mlx_walls_bonus.c bonus_coin.c itoa_bonus.c
+FILES= ../gnl/get_next_line.c ../gnl/get_next_line_utils.c ft_split_bonus.c check_map_bonus.c utils_bonus.c config_map_bonus.c mlx_start_bonus.c main_bonus.c keys_bonus.c mlx_walls_bonus.c coin_bonus.c itoa_bonus.c check_path_bonus.c
 
 OBJ= $(FILES:.c=.o)
 NAME= so_long_bonus

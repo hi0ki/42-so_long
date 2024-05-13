@@ -102,30 +102,3 @@ void	get_enemy(t_mlx *s)
 		y++;
 	}
 }
-
-void	put_count(t_mlx *s)
-{
-	void	*texture;
-	void	*img;
-	int		x;
-	int		len;
-
-	x = 1;
-	len = s->width / 60;
-	texture = mlx_load_png("imgs/count/left.png");
-	img = mlx_texture_to_image(s->mlx, texture);
-	mlx_image_to_window(s->mlx, img, 0, s->height);
-	mlx_delete_texture(texture);
-	while (x < len)
-	{
-		texture = mlx_load_png("imgs/count/cnt.png");
-		img = mlx_texture_to_image(s->mlx, texture);
-		mlx_image_to_window(s->mlx, img, x * 60, s->height);
-		mlx_delete_texture(texture);
-		x++;
-	}
-	texture = mlx_load_png("imgs/count/right.png");
-	img = mlx_texture_to_image(s->mlx, texture);
-	mlx_image_to_window(s->mlx, img, (x - 1) * 60, s->height);
-	mlx_delete_texture(texture);
-}

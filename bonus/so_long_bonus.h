@@ -45,6 +45,7 @@ int		check_player(t_mlx *s);
 void	check_path(char **map, int x, int y, t_mlx *s);
 int		config_map(t_mlx *s, int fd);
 int		check_ber(char *str);
+int		check_texture(void);
 /*				MLX utils             */
 void	put_walls(t_mlx *s, int x, int y);
 void	put_ground(t_mlx *s, int x, int y);
@@ -69,6 +70,5 @@ void	get_exit(t_mlx *s);
 void	get_enemy(t_mlx *s);
 void	delete_tex(void **texture);
 char	*ft_itoa(int n);
-void	put_count(t_mlx *s);
 
 #endif

@@ -18,10 +18,16 @@ void	get_count(t_mlx *s)
 	void	*img;
 
 	texture = mlx_load_png("imgs/walls/top_left.png");
+	if (!texture)
+		puterror("Error: Failed to load texture\n");
 	img = mlx_texture_to_image(s->mlx, texture);
+	if (!texture)
+		puterror("Error: Failed to load texture\n");
 	mlx_image_to_window(s->mlx, img, 0, 0);
 	mlx_delete_texture(texture);
 	texture = mlx_load_png("imgs/walls/top_cnt.png");
+	if (!texture)
+		puterror("Error: Failed to load texture\n");
 	img = mlx_texture_to_image(s->mlx, texture);
 	mlx_image_to_window(s->mlx, img, 60, 0);
 	mlx_delete_texture(texture);
@@ -41,11 +47,15 @@ void	take_thecoins(t_mlx *s, int x, int y, char *str)
 		s->coins -= 1;
 		s->map[y][x] = '0';
 		texture = mlx_load_png("imgs/walls/ground.png");
+		if (!texture)
+			puterror("Error: Failed to load texture\n");
 		ground = mlx_texture_to_image(s->mlx, texture);
 		mlx_delete_texture(texture);
 		mlx_image_to_window(s->mlx, ground, x * 60, y * 60);
 		mlx_delete_image(s->mlx, s->player);
 		texture = mlx_load_png(str);
+		if (!texture)
+			puterror("Error: Failed to load texture\n");
 		s->player = mlx_texture_to_image(s->mlx, texture);
 		mlx_image_to_window(s->mlx, s->player, x * 60, y * 60);
 		mlx_delete_texture(texture);
@@ -119,5 +129,5 @@ void	my_keys(mlx_key_data_t keydata, void *param)
 	else if (keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_A)
 		left_right(keydata, s, x, y);
 	else if (keydata.key == MLX_KEY_ESCAPE)
-		exit(1);
+		exit(EXIT_FAILURE);
 }

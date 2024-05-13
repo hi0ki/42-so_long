@@ -37,7 +37,7 @@ int	main(int ac, char **av)
 		fd = open(av[1], O_RDWR);
 		if (fd == -1)
 			puterror("Error: Invalid file\n");
-		if (config_map(&str, fd) == 0 && check_ber(av[1]) == 0)
+		if (check_texture() == 0 && config_map(&str, fd) == 0 && check_ber(av[1]) == 0)
 		{
 			str.height = (arrlen(&str)) * 60;
 			str.width = (ft_strlen(str.map[1])) * 60;

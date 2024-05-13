@@ -1,4 +1,4 @@
-FILES= ../gnl/get_next_line.c ../gnl/get_next_line_utils.c ft_split.c check_map.c utils.c config_map.c mlx_start.c main.c keys.c mlx_walls.c
+FILES= ../gnl/get_next_line.c ../gnl/get_next_line_utils.c ft_split.c check_map.c utils.c config_map.c mlx_start.c main.c keys.c mlx_walls.c check_path.c
 
 OBJ= $(FILES:.c=.o)
 NAME= so_long

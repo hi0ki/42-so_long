@@ -26,9 +26,9 @@ void	delete_tex(void **texture)
 	texture = NULL;
 }
 
-void **take_textures(void **texture)
+void	**take_textures(void **texture)
 {
-	texture = malloc(17 * sizeof(void*));
+	texture = malloc(17 * sizeof(void *));
 	texture[0] = mlx_load_png("imgs/walls/bot_cnt.png");
 	texture[1] = mlx_load_png("imgs/walls/bot_left.png");
 	texture[2] = mlx_load_png("imgs/walls/bot_right.png");
@@ -45,14 +45,14 @@ void **take_textures(void **texture)
 	texture[13] = mlx_load_png("imgs/to_left.png");
 	texture[14] = mlx_load_png("imgs/to_right.png");
 	texture[15] = mlx_load_png("imgs/to_top.png");
-	texture[16]  = NULL;
+	texture[16] = NULL;
 	return (texture);
 }
 
-int check_texture(void)
+int	check_texture(void)
 {
-	void **texture;
-	int i;
+	void	**texture;
+	int		i;
 
 	i = 0;
 	texture = NULL;

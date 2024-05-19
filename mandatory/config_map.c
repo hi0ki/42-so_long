@@ -12,6 +12,22 @@
 
 #include "so_long.h"
 
+int	check_lines(t_mlx *s)
+{
+	int	len;
+	int	i;
+
+	i = 0;
+	len = ft_strlen(s->map[0]);
+	while (s->map[i])
+	{
+		if (len != ft_strlen(s->map[i]))
+			puterror("Error: All lines should have the same length\n");
+		i++;
+	}
+	return (0);
+}
+
 void	find_player(t_mlx *s)
 {
 	int	y;
@@ -69,9 +85,9 @@ int	config_map(t_mlx *s, int fd)
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
-	s->map = ft_split(str, '\n');
+	s->map = ft_split(str, '\n'); 
 	free(str);
-	if (check_walls(s) == -1 || check_coins_e(s) == 0 || 
+	if (check_lines(s) != 0 || check_walls(s) == -1 || check_coins_e(s) == 0 || 
 		check_player(s) == -1 || more_check(s) == -1)
 		puterror("Error\n");
 	return (0);

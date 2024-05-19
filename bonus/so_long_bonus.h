@@ -13,7 +13,7 @@
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
-# include "../MLX42/include/MLX42/MLX42.h"
+# include "../../MLX42/include/MLX42/MLX42.h"
 # include "../gnl/get_next_line.h"
 # include <fcntl.h>
 # include <stdlib.h>

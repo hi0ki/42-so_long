@@ -60,7 +60,7 @@ int	check_walls(t_mlx *s)
 	{
 		if (s->map[i - 1][len] != '1')
 			return (puterror("Error: the map is not surrounded by walls\n"), -1);
-		len++;
+		len++; 
 	}
 	return (0);
 }
